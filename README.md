@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
-<img src="https://raw.githubusercontent.com/Varun4002/Elara/main/fastlane/metadata/android/en-US/images/icon.png" alt="Elara app icon" width="200" />
+<img src="https://raw.githubusercontent.com/Varun4002/Elara/main/app/src/main/res/drawable/app_icon.jpg" alt="Elara app icon" width="200" />
 
 # Elara
 
