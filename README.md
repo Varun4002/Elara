@@ -1,57 +1,35 @@
 ﻿<div align="center">
 
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/icon.png" alt="Elara app icon" width="200" />
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/icon.png" alt="Elara app icon" width="200" />
 
 # Elara
 
-### YouTube Music client for Android
+### *Listen Beautifully.*
+
+A premium Android YouTube Music client with a custom glassmorphism design system.
 
 <br/>
 
-<a href="https://trendshift.io/repositories/20652" target="_blank">
-  <img src="https://trendshift.io/api/badge/repositories/20652" alt="ElaraGroup/Elara | Trendshift" width="250" height="55" />
-</a>
+[![Latest release](https://img.shields.io/github/v/release/Varun4002/Elara?style=for-the-badge&labelColor=0d1117)](https://github.com/Varun4002/Elara/releases)
+[![License](https://img.shields.io/github/license/Varun4002/Elara?style=for-the-badge&labelColor=0d1117)](https://github.com/Varun4002/Elara/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/Varun4002/Elara/total?style=for-the-badge&labelColor=0d1117)](https://github.com/Varun4002/Elara/releases)
 
 <br/>
 
-[![Latest release](https://img.shields.io/github/v/release/ElaraGroup/Elara?style=for-the-badge&labelColor=0d1117)](https://github.com/ElaraGroup/Elara/releases)
-[![License](https://img.shields.io/github/license/ElaraGroup/Elara?style=for-the-badge&labelColor=0d1117)](https://github.com/ElaraGroup/Elara/blob/main/LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/ElaraGroup/Elara/total?style=for-the-badge&labelColor=0d1117)](https://github.com/ElaraGroup/Elara/releases)
-
-<br/>
-
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white&labelColor=0d1117)](https://dsc.gg/Elara)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0d1117)](https://t.me/Elaraapp)
-
-<br/>
-
-[**Download**](#download-now) Â· [**Features**](#features) Â· [**Translate**](#translations) Â· [**FAQ**](#faq) Â· [**Support**](#support-the-project)
+[**Features**](#features) · [**Screenshots**](#screenshots) · [**Build**](#build) · [**License**](#license)
 
 </div>
+
+---
 
 > [!WARNING]
-> **Regional Restriction** - If YouTube Music is unavailable in your region, this app will not work without a **VPN or proxy** connecting to a supported region.
+> **Regional Restriction** — If YouTube Music is unavailable in your region, this app will not work without a **VPN or proxy** connecting to a supported region.
 
 ---
 
 <div align="center">
 
-<h1><a id="screenshots"></a>Screenshots</h1>
-
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_1.png" alt="Home screen" width="30%" />
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_2.png" alt="Artist screen" width="30%" />
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_3.png" alt="Recognize music screen" width="30%" />
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_4.png" alt="Listen together screen" width="30%" />
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_5.png" alt="Player screen" width="30%" />
-<img src="https://github.com/ElaraGroup/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_6.png" alt="Player lyrics screen" width="30%" />
-
-</div>
-
----
-
-<div align="center">
-
-<h1><a id="features"></a>Features</h1>
+## <a id="features"></a>Features
 
 <table>
   <tr>
@@ -59,10 +37,10 @@
 
 #### Playback
 - Stream any song or video from YouTube Music
-- Background playback
+- Background playback with Media3 ExoPlayer
 - Download & cache for offline use
-- Skip silence
-- Sleep timer
+- Skip silence, sleep timer
+- Google Cast support
 
 </td>
     <td width="50%" valign="top">
@@ -70,7 +48,8 @@
 #### Audio
 - Audio normalization
 - Tempo & pitch control
-- Equalizer
+- 10-band equalizer
+- High-quality audio streaming
 
 </td>
   </tr>
@@ -78,21 +57,19 @@
     <td width="50%" valign="top">
 
 #### Lyrics & Discovery
-- Live synced lyrics
+- Live synced lyrics (KuGou, LrcLib, BetterLyrics, Paxsenix)
 - AI-powered lyrics translation
 - Personalized quick picks
-- Search songs, albums, artists, videos, and playlists
+- Search songs, albums, artists, videos, playlists
 
 </td>
     <td width="50%" valign="top">
 
-#### Library & Account
+#### Library
 - Full library management
-- Local playlists
+- Local playlists with reorder
 - Import playlists
-- Reorder songs in playlist or queue
-- YouTube Music account login
-- Sync songs, artists, albums, and playlists
+- YouTube Music account sync
 
 </td>
   </tr>
@@ -100,16 +77,37 @@
     <td width="50%" valign="top">
 
 #### Social
-- Listen together with friends in real-time
+- Listen Together — real-time sync with friends
+- LastFM scrobbling
+- Discord Rich Presence
 
 </td>
     <td width="50%" valign="top">
 
 #### Interface
-- Home screen widget
-- Light / Dark / Black / Dynamic theme modes
-- Dynamic color + 19 preset color palettes
-- Built with Material 3
+- Custom glassmorphism design system
+- Material You dynamic color + 19 presets
+- Full-screen artwork with floating glass controls
+- AMOLED dark mode
+
+</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+
+#### Recognition
+- Music recognition via Shazam API
+- Quick Settings tile
+- Home screen widgets
+
+</td>
+    <td width="50%" valign="top">
+
+#### More
+- Auto-updater
+- Proxy support (HTTP/SOCKS)
+- Android TV support
+- Tablet UI scaling
 
 </td>
   </tr>
@@ -121,193 +119,113 @@
 
 <div align="center">
 
-<h1><a id="download-now"></a>Download Now</h1>
+## <a id="screenshots"></a>Screenshots
 
-<h2>Stable Release</h2>
-
-<table>
-  <tr>
-    <th align="center">Obtainium</th>
-    <th align="center">IzzyOnDroid</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/ElaraGroup/Elara/">
-        <img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png" alt="Download from Obtainium" height="40">
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://apt.izzysoft.de/fdroid/index/apk/com.Elara.music">
-        <img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Download from IzzyOnDroid" height="60">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th align="center">OpenAPK</th>
-    <th align="center">GitHub</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://www.openapk.net/Elara/com.Elara.music/">
-        <img src="https://www.openapk.net/images/openapk-badge.png" alt="Download from OpenAPK" height="60">
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/ElaraGroup/Elara/releases/latest/download/Elara.apk">
-        <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="60">
-      </a>
-    </td>
-  </tr>
-</table>
-
-<h2>Nightly Build</h2>
-
-<table>
-  <tr>
-    <th align="center">GitHub</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://nightly.link/ElaraGroup/Elara/workflows/build/main/app-with-Google-Cast.zip">
-        <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="75">
-      </a>
-    </td>
-  </tr>
-</table>
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_1.png" alt="Home screen" width="30%" />
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_2.png" alt="Artist screen" width="30%" />
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_3.png" alt="Recognize music screen" width="30%" />
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_4.png" alt="Listen together screen" width="30%" />
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_5.png" alt="Player screen" width="30%" />
+<img src="https://github.com/Varun4002/Elara/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_6.png" alt="Player lyrics screen" width="30%" />
 
 </div>
 
 ---
 
-<div align="center">
+## <a id="build"></a>Build
 
-<h1><a id="faq"></a>FAQ</h1>
+### Prerequisites
 
-<h3>Got questions? Check out our <a href="https://Elara.cc/#faq">FAQ page</a> for answers to the most common ones.</h3>
+- JDK 21
+- Android SDK (platform 37+)
+- Android platform tools
 
-</div>
+### Setup
 
----
+```bash
+# Clone with submodules
+git clone https://github.com/Varun4002/Elara.git
+cd Elara
+git submodule update --init --recursive
 
-<div align="center">
+# Generate protobuf stubs
+cd app && bash generate_proto.sh && cd ..
 
-<h1><a id="translations"></a>Translations</h1>
-
-[![Translation status](https://img.shields.io/weblate/progress/Elara?style=for-the-badge&labelColor=0d1117)](https://hosted.weblate.org/engage/Elara/)
-
-<h3>We use Weblate to translate Elara. <a href="https://hosted.weblate.org/projects/Elara/">Help us bring Elara to more people!</a></h3>
-
-<a href="https://hosted.weblate.org/projects/Elara/">
-  <img src="https://hosted.weblate.org/widget/Elara/horizontal-auto.svg" alt="Translation status" />
-</a>
-
-<h3>Thank you! Every translation makes Elara a little more accessible to someone, somewhere in the world.</h3>
-
-</div>
-
----
-
-<div align="center">
-
-<h1><a id="support-the-project"></a>Support the Project</h1>
-
-<h3>Elara is free and open-source. If it brings you joy, consider supporting its development!</h3>
-
-#### Monero (XMR)
-
-<img src="https://github.com/ElaraGroup/Elara/blob/main/assets/XMR.png" alt="Monero QR code" width="150" />
-
-```text
-44XjSELSWcgJTZiCKzjpCQWyXhokrH9RqH3rpp35FkSKi57T25hniHWHQNhLeXyFn3DDYqufmfRB1iEtENerZpJc7xJCcqt
+# Create debug keystore (first time)
+keytool -genkeypair -v -keystore app/persistent-debug.keystore \
+  -storepass android -keypass android -alias androiddebugkey \
+  -keyalg RSA -keysize 2048 -validity 10000 \
+  -dname "CN=Android Debug,O=Android,C=US"
 ```
 
-#### Buy Me a Coffee
+### Build & Test
 
-<a href="https://www.buymeacoffee.com/mostafaalagamy">
-  <img src="https://github.com/ElaraGroup/Elara/blob/main/assets/buymeacoffee.png?raw=true" alt="Buy Me a Coffee" width="150" />
-</a>
+```bash
+# Build debug APK
+./gradlew :app:assembleGmsDebug
 
-</div>
+# APK location:
+# app/build/outputs/apk/universalGms/debug/app-universal-gms-debug.apk
+
+# Run unit tests
+./gradlew :app:testGmsDebugUnitTest
+```
+
+> **Note:** Only the `Gms` flavor is available (Google Mobile Services). The original `foss` and `izzy` flavors were removed during the fork.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Kotlin 2.x |
+| UI | Jetpack Compose + Material 3 |
+| Architecture | MVVM + Repository |
+| DI | Dagger Hilt |
+| Playback | Media3 ExoPlayer |
+| Networking | Ktor (YouTube InnerTube API) |
+| Database | Room |
+| Image Loading | Coil 3 |
+| Navigation | Compose Navigation (~45+ routes) |
+| Theme | Material You + 19 presets |
+
+---
+
+## Deep Links
+
+| Intent | Action |
+|---|---|
+| `https://elara.cc/listen/...` | Listen Together invites |
+| `elaradiscord://oauth2/callback` | Discord OAuth callback |
+| `com.elara.music.action.RECOGNITION` | Music recognition shortcut |
+| `youtube.com`, `youtu.be`, `music.youtube.com` | YouTube intent filters |
+
+---
+
+## <a id="license"></a>License
+
+This project is licensed under the **GNU General Public License v3.0**. See the [LICENSE](LICENSE) file for details.
+
+```
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+```
 
 ---
 
 <div align="center">
 
-<h1>Special Thanks</h1>
+### Disclaimer
 
-<h3>Elara stands on the shoulders of incredible open-source work.</h3>
-
-<h3>Main Inspirations</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th align="center">Project</th>
-      <th align="center">Authors</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><strong>InnerTune</strong></td>
-      <td align="center"><a href="https://github.com/z-huang">Zion Huang</a> Â· <a href="https://github.com/Malopieds">Malopieds</a></td>
-    </tr>
-    <tr>
-      <td align="center"><strong>OuterTune</strong></td>
-      <td align="center"><a href="https://github.com/DD3Boh">Davide Garberi</a> Â· <a href="https://github.com/mikooomich">Michael Zh</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>Libraries & Integrations</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th align="center">Project</th>
-      <th align="center">Contribution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://better-lyrics.boidu.dev"><strong>Better Lyrics</strong></a></td>
-      <td>Time-synced lyrics with word-by-word highlighting & YouTube Music integration</td>
-    </tr>
-    <tr>
-      <td align="center"><a href="https://github.com/ElaraGroup/metroserver"><strong>metroserver</strong></a></td>
-      <td>Listen-together real-time backend</td>
-    </tr>
-    <tr>
-      <td align="center"><a href="https://github.com/aleksey-saenko/MusicRecognizer"><strong>MusicRecognizer</strong></a></td>
-      <td>Music recognition feature & Shazam API integration</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>We also thank the entire open-source community! For every library, tool, and API that powers this project.</h3>
-
-</div>
-
----
-
-<div align="center">
-
-<h1>Contributors</h1>
-
-<h3>This project wouldn't exist without these amazing people!</h3>
-
-<a href="https://github.com/ElaraGroup/Elara/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ElaraGroup/Elara" alt="Contributors" />
-</a>
-
-</div>
-
----
-
-<div align="center">
-
-<h1>Disclaimer</h1>
-
-This project is **not affiliated with, funded, authorized, endorsed by, or in any way associated** with YouTube, Google LLC, Elara Group LLC, or any of their affiliates and subsidiaries.
+This project is **not affiliated with, funded, authorized, endorsed by, or in any way associated** with YouTube, Google LLC, or any of their affiliates and subsidiaries.
 
 All trademarks, service marks, and intellectual property rights referenced in this project belong to their respective owners.
 
@@ -317,10 +235,14 @@ All trademarks, service marks, and intellectual property rights referenced in th
 
 <div align="center">
 
-<br/>
+### Acknowledgments
 
-**Made with â¤ï¸ by [Mo Agamy](https://github.com/mostafaalagamy)**
+Elara is a fork of **InnerTune** (by Zion Huang & Malopieds) and **OuterTune** (by Davide Garberi & Michael Zh), with a complete glassmorphism UI redesign and significant enhancements.
 
-**This project stands with Palestine ðŸ‡µðŸ‡¸**
+Special thanks to:
+- [Better Lyrics](https://better-lyrics.boidu.dev) — time-synced lyrics
+- [metroserver](https://github.com/ElaraGroup/metroserver) — Listen Together backend
+- [MusicRecognizer](https://github.com/aleksey-saenko/MusicRecognizer) — Shazam integration
+- [Mo Agamy](https://github.com/mostafaalagamy) — original Elara development
 
 </div>
