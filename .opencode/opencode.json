@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "https://opencode.ai/config.json",
   "username": "varun",
   "instructions": [
@@ -10,10 +10,10 @@
   ],
   "formatter": false,
   "references": {
-    "metrolist-og": {
-      "repository": "MetrolistGroup/Metrolist",
+    "Elara-og": {
+      "repository": "ElaraGroup/Elara",
       "branch": "main",
-      "description": "Original Metrolist source - reference for rebranding and upstream changes"
+      "description": "Original Elara source - reference for rebranding and upstream changes"
     }
   },
   "skills": {

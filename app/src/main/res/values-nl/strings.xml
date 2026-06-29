@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Thuis</string>
     <string name="songs">Nummers</string>
@@ -24,8 +24,8 @@
     <string name="most_played_artists">Meest afgespeelde artiesten</string>
     <string name="most_played_albums">Meest afgespeelde artiesten</string>
     <string name="search">Zoeken</string>
-    <string name="search_yt_music">Zoeken via YouTube Music…</string>
-    <string name="search_library">Zoeken in bibliotheek…</string>
+    <string name="search_yt_music">Zoeken via YouTube Musicâ€¦</string>
+    <string name="search_library">Zoeken in bibliotheekâ€¦</string>
     <string name="filter_library">Bibliotheek</string>
     <string name="filter_liked">Geliked</string>
     <string name="filter_downloaded">Gedownload</string>
@@ -200,7 +200,7 @@
     <string name="max_song_cache_size">Max. grootte cache voor nummers</string>
     <string name="clear_song_cache">Wis nummer cache</string>
     <string name="size_used">%s gebruikt</string>
-    <string name="privacy">Privéheid</string>
+    <string name="privacy">PrivÃ©heid</string>
     <string name="pause_listen_history">Pauzeer luistergeschiedenis</string>
     <string name="clear_listen_history">Luistergeschiedenis wissen</string>
     <string name="clear_listen_history_confirm">Weet je zeker dat je de luistergeschiedenis wil wissen?</string>
@@ -234,8 +234,8 @@
     <string name="library_artist_empty">Bibliotheekartiesten worden hier weergegeven</string>
     <string name="library_album_empty">Bibliotheekalbums worden hier weergegeven</string>
     <string name="other_versions">Andere versies</string>
-    <string name="remove_download_playlist_confirm">Wilt u echt alle nummers van de afspeellijst “%s” verwijderen uit de opslag Gedownloade nummers?</string>
-    <string name="delete_playlist_confirm">Wil je echt de afspeellijst “%s” verwijderen?</string>
+    <string name="remove_download_playlist_confirm">Wilt u echt alle nummers van de afspeellijst â€œ%sâ€ verwijderen uit de opslag Gedownloade nummers?</string>
+    <string name="delete_playlist_confirm">Wil je echt de afspeellijst â€œ%sâ€ verwijderen?</string>
     <string name="add_all_to_library">Alles toevoegen aan bibliotheek</string>
     <string name="remove_all_from_library">Alles verwijderen uit bibliotheek</string>
     <string name="remove_from_playlist">Uit afspeellijst verwijderen</string>
@@ -269,7 +269,7 @@
     <string name="disable_screenshot">Schermafbeelding uitschakelen</string>
     <string name="disable_screenshot_desc">Als deze optie is ingeschakeld, zijn schermafbeeldingen en de weergave van de app in Recente bestanden uitgeschakeld.</string>
     <string name="hide_explicit">Expliciete inhoud verbergen</string>
-    <string name="discord_information">Metrolist gebruikt de KizzyRPC bibliotheek om de status van je Discord account in te stellen. Dit omvat het gebruik van de Discord Gateway verbinding, die kan worden beschouwd als een schending van de TOS van Discord. Er zijn echter geen gevallen bekend van gebruikersaccounts die om deze reden zijn geschorst. Gebruik op eigen risico.\n\nMetrolist zal alleen uw token uitpakken, en al het andere wordt lokaal opgeslagen.</string>
+    <string name="discord_information">Elara gebruikt de KizzyRPC bibliotheek om de status van je Discord account in te stellen. Dit omvat het gebruik van de Discord Gateway verbinding, die kan worden beschouwd als een schending van de TOS van Discord. Er zijn echter geen gevallen bekend van gebruikersaccounts die om deze reden zijn geschorst. Gebruik op eigen risico.\n\nElara zal alleen uw token uitpakken, en al het andere wordt lokaal opgeslagen.</string>
     <string name="options">Opties</string>
     <string name="preview">Voorbeeld</string>
     <string name="login_failed">Aanmelden mislukt</string>

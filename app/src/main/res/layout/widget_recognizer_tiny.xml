@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Music Recognizer Widget – Tiny (1×1) -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Music Recognizer Widget â€“ Tiny (1Ã—1) -->
 <!-- Only animated mic circle, no text -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_recognizer_tiny_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/widget_background"
-    android:theme="@style/Theme.Widget.Metrolist">
+    android:theme="@style/Theme.Widget.Elara">
 
     <!-- Pulse ring (behind the button) -->
     <ImageView

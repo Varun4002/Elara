@@ -1,4 +1,4 @@
-# Add project specific ProGuard rules here.
+﻿# Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.kts.
 #
@@ -10,20 +10,20 @@
 # Without this, R8 assigns short names (e.g. `j`, `k`) to renamed classes in a non-deterministic
 # order, causing byte-for-byte differences between builds. This is required for F-Droid / IzzyOnDroid
 # Reproducible Build verification. Code shrinking (dead code removal) remains fully enabled.
-# Since Metrolist is fully open-source, obfuscation provides no meaningful security benefit.
+# Since Elara is fully open-source, obfuscation provides no meaningful security benefit.
 -dontobfuscate
 
 # WebView JavaScript interfaces
--keepclassmembers class com.metrolist.music.utils.cipher.CipherWebView {
+-keepclassmembers class com.elara.music.utils.cipher.CipherWebView {
     @android.webkit.JavascriptInterface public *;
 }
--keepclassmembers class com.metrolist.music.utils.potoken.PoTokenWebView {
+-keepclassmembers class com.elara.music.utils.potoken.PoTokenWebView {
     @android.webkit.JavascriptInterface public *;
 }
 
 # Keep streaming utility classes
--keep class com.metrolist.music.utils.cipher.** { *; }
--keep class com.metrolist.music.utils.potoken.** { *; }
+-keep class com.elara.music.utils.cipher.** { *; }
+-keep class com.elara.music.utils.potoken.** { *; }
 
 # Keep coroutine continuation for WebView callbacks
 -keepclassmembers class * {
@@ -31,7 +31,7 @@
     void resumeWithException(...);
 }
 
-## Kotlin Coroutines — Reproducible Build Rules
+## Kotlin Coroutines â€” Reproducible Build Rules
 # Keep volatile fields in coroutine classes to prevent AtomicFieldUpdater optimisation issues
 # and ensure R8 does not reorder or merge these across builds.
 # Source: https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/jvm/resources/META-INF/proguard/coroutines.pro
@@ -146,11 +146,11 @@
 
 ## Queue Persistence Rules
 # Keep queue-related classes to prevent serialization issues in release builds
--keep class com.metrolist.music.models.PersistQueue { *; }
--keep class com.metrolist.music.models.PersistPlayerState { *; }
--keep class com.metrolist.music.models.QueueData { *; }
--keep class com.metrolist.music.models.QueueType { *; }
--keep class com.metrolist.music.playback.queues.** { *; }
+-keep class com.elara.music.models.PersistQueue { *; }
+-keep class com.elara.music.models.PersistPlayerState { *; }
+-keep class com.elara.music.models.QueueData { *; }
+-keep class com.elara.music.models.QueueType { *; }
+-keep class com.elara.music.playback.queues.** { *; }
 
 # Keep serialization methods for queue persistence
 -keepclassmembers class * implements java.io.Serializable {
@@ -164,7 +164,7 @@
 -keep interface com.yalantis.ucrop** { *; }
 
 ## Google Cast Rules
--keep class com.metrolist.music.cast.** { *; }
+-keep class com.elara.music.cast.** { *; }
 -keep class com.google.android.gms.cast.** { *; }
 -keep class androidx.mediarouter.** { *; }
 
@@ -172,8 +172,8 @@
 -dontwarn com.google.re2j.**
 
 # Vibra fingerprint library
--keep class com.metrolist.music.recognition.VibraSignature { *; }
--keepclassmembers class com.metrolist.music.recognition.VibraSignature {
+-keep class com.elara.music.recognition.VibraSignature { *; }
+-keepclassmembers class com.elara.music.recognition.VibraSignature {
     native <methods>;
 }
 
@@ -188,26 +188,26 @@
 -dontwarn io.ktor.**
 
 ## Listen Together Protobuf
--keep class com.metrolist.music.listentogether.proto.** { *; }
--keepclassmembers class com.metrolist.music.listentogether.proto.** { *; }
+-keep class com.elara.music.listentogether.proto.** { *; }
+-keepclassmembers class com.elara.music.listentogether.proto.** { *; }
 
 ## Shazam Models
--keep class com.metrolist.shazamkit.models.** { *; }
--keepclassmembers class com.metrolist.shazamkit.models.** {
+-keep class com.elara.shazamkit.models.** { *; }
+-keepclassmembers class com.elara.shazamkit.models.** {
     *;
 }
 
 ## Discord RPC JNI
--keep class com.metrolist.music.discord.DiscordRpcManager { *; }
--keepclassmembers class com.metrolist.music.discord.DiscordRpcManager {
+-keep class com.elara.music.discord.DiscordRpcManager { *; }
+-keepclassmembers class com.elara.music.discord.DiscordRpcManager {
     native <methods>;
 }
 
 ## Kotlinx Serialization
 -keepattributes *Annotation*
--keepclassmembers class com.metrolist.shazamkit.models.** {
+-keepclassmembers class com.elara.shazamkit.models.** {
     *** Companion;
 }
--keepclasseswithmembers class com.metrolist.shazamkit.models.** {
+-keepclasseswithmembers class com.elara.shazamkit.models.** {
     kotlinx.serialization.KSerializer serializer(...);
 }

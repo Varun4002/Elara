@@ -1,10 +1,10 @@
-plugins {
+﻿plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.metrolist.lrclib"
+    namespace = "com.elara.lrclib"
     compileSdk = 37
 
     defaultConfig {

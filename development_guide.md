@@ -1,6 +1,6 @@
-# Metrolist Dev Guide
+﻿# Elara Dev Guide
 
-This file outlines the process of setting up a local dev environment for Metrolist.
+This file outlines the process of setting up a local dev environment for Elara.
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ This file outlines the process of setting up a local dev environment for Metroli
 This has been tested on Linux, but should work on other platforms with some adjustments.
 
 ```bash
-git clone https://github.com/MetrolistGroup/Metrolist
-cd Metrolist
+git clone https://github.com/ElaraGroup/Elara
+cd Elara
 git submodule update --init --recursive
 cd app
 bash generate_proto.sh
@@ -29,7 +29,7 @@ ls app/build/outputs/apk/foss/debug/app-foss-debug.apk
 This project uses GitHub Secrets to securely store API keys for building releases. To set up the secrets:
 
 1. Go to your GitHub repository settings
-2. Navigate to **Settings** → **Secrets and variables** → **Actions**
+2. Navigate to **Settings** â†’ **Secrets and variables** â†’ **Actions**
 3. Add the following repository secrets:
    - `LASTFM_API_KEY`: Your LastFM API key
    - `LASTFM_SECRET`: Your LastFM secret key

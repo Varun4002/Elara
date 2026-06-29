@@ -1,10 +1,10 @@
-plugins {
+﻿plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.metrolist.paxsenix"
+    namespace = "com.elara.paxsenix"
     compileSdk = 37
 
     defaultConfig {

@@ -1,10 +1,10 @@
-plugins {
+﻿plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.metrolist.innertube"
+    namespace = "com.elara.innertube"
     compileSdk = 37
 
     defaultConfig {
@@ -29,7 +29,7 @@ dependencies {
     implementation(libs.ktor.serialization.json)
     implementation(libs.ktor.client.encoding)
     implementation(libs.brotli)
-    implementation("com.github.MetrolistGroup:MetrolistExtractor:f0a00f5") {
+    implementation("com.github.ElaraGroup:ElaraExtractor:f0a00f5") {
         exclude(group = "com.google.protobuf")
     }
     implementation(libs.timber)

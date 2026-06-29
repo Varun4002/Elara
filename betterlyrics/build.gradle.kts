@@ -1,10 +1,10 @@
-plugins {
+﻿plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.metrolist.betterlyrics"
+    namespace = "com.elara.betterlyrics"
     compileSdk = 37
 
     defaultConfig {

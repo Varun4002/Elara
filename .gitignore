@@ -1,4 +1,4 @@
-# Built application files
+﻿# Built application files
 *.apk
 *.aar
 *.ap_
@@ -101,7 +101,7 @@ core.*
 *.so
 *.bin
 .env
-app/src/main/java/com/metrolist/music/listentogether/proto/*
+app/src/main/java/com/Elara/music/listentogether/proto/*
 
 # FFTW third-party library build artifacts
 .build-fftw

@@ -1,4 +1,4 @@
-import org.gradle.api.DefaultTask
+﻿import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 
 import org.gradle.api.file.RegularFileProperty
@@ -19,13 +19,13 @@ if (localPropertiesFile.exists()) {
     localProperties.load(localPropertiesFile.inputStream())
 }
 
-val baseApplicationId = "com.metrolist.music"
-val applicationIdOverride = System.getenv("METROLIST_APPLICATION_ID")?.takeIf { it.isNotBlank() }
-val appNameOverride = System.getenv("METROLIST_APP_NAME")?.takeIf { it.isNotBlank() }
-val debugKeystorePathOverride = System.getenv("METROLIST_DEBUG_KEYSTORE_PATH")?.takeIf { it.isNotBlank() }
-val debugKeystorePassword = System.getenv("METROLIST_DEBUG_KEYSTORE_PASSWORD")?.takeIf { it.isNotBlank() } ?: "android"
-val debugKeyAlias = System.getenv("METROLIST_DEBUG_KEY_ALIAS")?.takeIf { it.isNotBlank() } ?: "androiddebugkey"
-val debugKeyPassword = System.getenv("METROLIST_DEBUG_KEY_PASSWORD")?.takeIf { it.isNotBlank() } ?: "android"
+val baseApplicationId = "com.elara.music"
+val applicationIdOverride = System.getenv("Elara_APPLICATION_ID")?.takeIf { it.isNotBlank() }
+val appNameOverride = System.getenv("Elara_APP_NAME")?.takeIf { it.isNotBlank() }
+val debugKeystorePathOverride = System.getenv("Elara_DEBUG_KEYSTORE_PATH")?.takeIf { it.isNotBlank() }
+val debugKeystorePassword = System.getenv("Elara_DEBUG_KEYSTORE_PASSWORD")?.takeIf { it.isNotBlank() } ?: "android"
+val debugKeyAlias = System.getenv("Elara_DEBUG_KEY_ALIAS")?.takeIf { it.isNotBlank() } ?: "androiddebugkey"
+val debugKeyPassword = System.getenv("Elara_DEBUG_KEY_PASSWORD")?.takeIf { it.isNotBlank() } ?: "android"
 val persistentDebugKeystoreFile = file("persistent-debug.keystore")
 val workflowDebugKeystoreFile = debugKeystorePathOverride?.let(::file)
 
@@ -94,7 +94,7 @@ abstract class GenerateProtoTask : DefaultTask() {
 }
 
 android {
-    namespace = "com.metrolist.music"
+    namespace = "com.elara.music"
     compileSdk = 37
 
     defaultConfig {
@@ -103,7 +103,7 @@ android {
         targetSdk = 36
         versionCode = 149
         versionName = "13.6.0"
-        resValue("string", "app_name", appNameOverride ?: "Metrolist")
+        resValue("string", "app_name", appNameOverride ?: "Elara")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -122,30 +122,8 @@ android {
         buildConfigField("Long", "DISCORD_APP_ID", "1447278780795064401L")
     }
 
-    flavorDimensions += listOf("variant")
-    productFlavors {
-        // FOSS - Updater, but no gcast
-        create("foss") {
-            dimension = "variant"
-            isDefault = true
-            buildConfigField("Boolean", "CAST_AVAILABLE", "false")
-            buildConfigField("Boolean", "UPDATER_AVAILABLE", "true")
-        }
-
-        // GMS - Updater and gcast
-        create("gms") {
-            dimension = "variant"
-            buildConfigField("Boolean", "CAST_AVAILABLE", "true")
-            buildConfigField("Boolean", "UPDATER_AVAILABLE", "true")
-        }
-
-        // IzzyOnDroid - no gcast, no updater - the ONLY F-droid compliant build
-        create("izzy") {
-            dimension = "variant"
-            buildConfigField("Boolean", "CAST_AVAILABLE", "false")
-            buildConfigField("Boolean", "UPDATER_AVAILABLE", "false")
-        }
-    }
+    buildConfigField("Boolean", "CAST_AVAILABLE", "true")
+    buildConfigField("Boolean", "UPDATER_AVAILABLE", "true")
 
     signingConfigs {
         create("persistentDebug") {
@@ -191,7 +169,7 @@ android {
             }
             isDebuggable = true
             if (appNameOverride == null) {
-                resValue("string", "app_name", "Metrolist Debug")
+                resValue("string", "app_name", "Elara Debug")
             }
             signingConfig =
                 if (workflowDebugKeystoreFile != null) {
@@ -372,10 +350,9 @@ dependencies {
     implementation(libs.media3.session)
     implementation(libs.media3.okhttp)
 
-    // Google Cast - only included in GMS flavor (not available in F-Droid/FOSS builds)
-    "gmsImplementation"(libs.media3.cast)
-    "gmsImplementation"(libs.mediarouter)
-    "gmsImplementation"(libs.cast.framework)
+    implementation(libs.media3.cast)
+    implementation(libs.mediarouter)
+    implementation(libs.cast.framework)
 
     implementation(libs.room.runtime)
     implementation(libs.kuromoji.ipadic)

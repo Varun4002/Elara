@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="home">Home</string>
     <string name="songs">Brani</string>
@@ -21,12 +21,12 @@
     <string name="yesterday">Ieri</string>
     <string name="this_week">Questa settimana</string>
     <string name="last_week">Settimana scorsa</string>
-    <string name="most_played_songs">Brani più ascoltati</string>
-    <string name="most_played_artists">Artisti più ascoltati</string>
-    <string name="most_played_albums">Album più ascoltati</string>
+    <string name="most_played_songs">Brani piÃ¹ ascoltati</string>
+    <string name="most_played_artists">Artisti piÃ¹ ascoltati</string>
+    <string name="most_played_albums">Album piÃ¹ ascoltati</string>
     <string name="search">Cerca</string>
-    <string name="search_yt_music">Cerca su YouTube Music…</string>
-    <string name="search_library">Cerca nella libreria…</string>
+    <string name="search_yt_music">Cerca su YouTube Musicâ€¦</string>
+    <string name="search_library">Cerca nella libreriaâ€¦</string>
     <string name="filter_library">Libreria</string>
     <string name="filter_liked">Piaciuti</string>
     <string name="filter_downloaded">Scaricati</string>
@@ -36,14 +36,14 @@
     <string name="filter_albums">Album</string>
     <string name="filter_artists">Artisti</string>
     <string name="filter_playlists">Playlist</string>
-    <string name="filter_community_playlists">Playlist della comunità</string>
+    <string name="filter_community_playlists">Playlist della comunitÃ </string>
     <string name="filter_featured_playlists">Playlist in evidenza</string>
     <string name="filter_bookmarked">Aggiunto ai segnalibri</string>
     <string name="no_results_found">Nessun risultato trovato</string>
     <string name="from_your_library">Dalla tua libreria</string>
     <string name="liked_songs">Brani piaciuti</string>
     <string name="downloaded_songs">Brani scaricati</string>
-    <string name="playlist_is_empty">La playlist è vuota</string>
+    <string name="playlist_is_empty">La playlist Ã¨ vuota</string>
     <string name="retry">Riprova</string>
     <string name="radio">Radio</string>
     <string name="shuffle">Casuale</string>
@@ -83,7 +83,7 @@
     <string name="codecs">Codec</string>
     <string name="bitrate">Bitrate</string>
     <string name="sample_rate">Frequenza di campionamento</string>
-    <string name="loudness">Rumorosità</string>
+    <string name="loudness">RumorositÃ </string>
     <string name="volume">Volume</string>
     <string name="file_size">Dimensioni</string>
     <string name="unknown">Sconosciuto</string>
@@ -93,17 +93,17 @@
     <string name="edit_song">Modifica brano</string>
     <string name="song_title">Titolo del brano</string>
     <string name="song_artists">Artisti del brano</string>
-    <string name="error_song_title_empty">Il titolo del brano non può essere vuoto.</string>
-    <string name="error_song_artist_empty">L\'artista del brano non può essere vuoto.</string>
+    <string name="error_song_title_empty">Il titolo del brano non puÃ² essere vuoto.</string>
+    <string name="error_song_artist_empty">L\'artista del brano non puÃ² essere vuoto.</string>
     <string name="save">Salva</string>
     <string name="choose_playlist">Scegli una playlist</string>
     <string name="edit_playlist">Modifica playlist</string>
     <string name="create_playlist">Crea playlist</string>
     <string name="playlist_name">Nome della playlist</string>
-    <string name="error_playlist_name_empty">Il nome della playlist non può essere vuoto.</string>
+    <string name="error_playlist_name_empty">Il nome della playlist non puÃ² essere vuoto.</string>
     <string name="edit_artist">Modifica artista</string>
     <string name="artist_name">Nome dell\'artista</string>
-    <string name="error_artist_name_empty">Il nome dell\'artista non può essere vuoto.</string>
+    <string name="error_artist_name_empty">Il nome dell\'artista non puÃ² essere vuoto.</string>
     <plurals name="n_song">
         <item quantity="one">%d brano</item>
         <item quantity="many">%d brani</item>
@@ -159,7 +159,7 @@
     <string name="action_remove_like">Rimuovi mi piace</string>
     <string name="action_shuffle_on">Riproduzione casuale attivata</string>
     <string name="action_shuffle_off">Riproduzione casuale disattivata</string>
-    <string name="repeat_mode_off">Modalità ripetizione disattivata</string>
+    <string name="repeat_mode_off">ModalitÃ  ripetizione disattivata</string>
     <string name="repeat_mode_one">Ripeti brano corrente</string>
     <string name="repeat_mode_all">Ripeti coda</string>
     <string name="queue_all_songs">Tutti i brani</string>
@@ -191,7 +191,7 @@
     <string name="proxy_url">URL proxy</string>
     <string name="restart_to_take_effect">Riavvia l\'app per applicare le modifiche</string>
     <string name="player_and_audio">Riproduttore e audio</string>
-    <string name="audio_quality">Qualità dell\'audio</string>
+    <string name="audio_quality">QualitÃ  dell\'audio</string>
     <string name="audio_quality_auto">Automatica</string>
     <string name="audio_quality_high">Alta</string>
     <string name="audio_quality_low">Bassa</string>
@@ -239,8 +239,8 @@
     <string name="player_slider_style">Stile slider del player</string>
     <string name="keep_listening">Continua ad ascoltare</string>
     <string name="your_youtube_playlists">Le tue playlist di YouTube</string>
-    <string name="duplicates_description_multiple">La canzone %d è già nella tua playlist</string>
-    <string name="duplicates_description_single">La canzone è già nella tua playlist</string>
+    <string name="duplicates_description_multiple">La canzone %d Ã¨ giÃ  nella tua playlist</string>
+    <string name="duplicates_description_single">La canzone Ã¨ giÃ  nella tua playlist</string>
     <string name="delete_playlist_confirm">Vuoi davvero rimuovere la playlist %s?</string>
     <string name="library_song_empty">I brani della libreria verranno visualizzati qui</string>
     <string name="remove_all_from_library">Rimuovi tutto da libreria</string>
@@ -265,25 +265,25 @@
     <string name="misc">Altro</string>
     <string name="queue">Coda</string>
     <string name="persistent_queue_desc">Ripristina l\'ultima coda all\'apertura dell\'app</string>
-    <string name="auto_load_more">Carica automaticamente più canzoni</string>
+    <string name="auto_load_more">Carica automaticamente piÃ¹ canzoni</string>
     <string name="auto_skip_next_on_error">Salta alla prossima canzone quando si verifica un errore</string>
     <string name="auto_load_more_desc">Aggiungi automaticamente canzoni quando si raggiunge la fine della coda, se possibile</string>
     <string name="enable_lrclib">Attiva il fornitore di testi LcrLib</string>
     <string name="grid_cell_size">Dimensione delle celle della griglia</string>
     <string name="auto_skip_next_on_error_desc">Garantisci la tua esperienza di riproduzione continua</string>
-    <string name="stop_music_on_task_clear">Interrompi la musica quando l\'attività è interrotta</string>
+    <string name="stop_music_on_task_clear">Interrompi la musica quando l\'attivitÃ  Ã¨ interrotta</string>
     <string name="listen_history">Cronologia ascolti</string>
     <string name="search_history">Cronologia ricerche</string>
     <string name="disable_screenshot">Disabilita screenshot</string>
-    <string name="disable_screenshot_desc">Quando questa opzione è attiva, gli screenshot e la visualizzazione dell\'app nei Recenti sono disabilitati.</string>
+    <string name="disable_screenshot_desc">Quando questa opzione Ã¨ attiva, gli screenshot e la visualizzazione dell\'app nei Recenti sono disabilitati.</string>
     <string name="hide_explicit">Nascondi contenuti espliciti</string>
-    <string name="discord_information">Metrolist usa la libreria KizzyRPC per impostare lo stato del tuo account Discord. Ciò comporta l\'uso della connessione Discord Gateway, che può essere considerata una violazione dei TOS di Discord. Tuttavia, non ci sono casi noti di account utente sospesi per questo motivo. Usalo a tuo rischio e pericolo.\n\nMetrolist estrarrà solo il tuo token e tutto il resto verrà archiviato localmente.</string>
+    <string name="discord_information">Elara usa la libreria KizzyRPC per impostare lo stato del tuo account Discord. CiÃ² comporta l\'uso della connessione Discord Gateway, che puÃ² essere considerata una violazione dei TOS di Discord. Tuttavia, non ci sono casi noti di account utente sospesi per questo motivo. Usalo a tuo rischio e pericolo.\n\nElara estrarrÃ  solo il tuo token e tutto il resto verrÃ  archiviato localmente.</string>
     <string name="options">Opzioni</string>
     <string name="use_login_for_browse">Usa il login per navigare nei contenuti</string>
     <string name="preview">Anteprima</string>
     <string name="login_failed">Login fallito</string>
     <string name="action_logout">Esci</string>
-    <string name="use_login_for_browse_desc">Ciò può influenzare il contenuto che vedi e ad esempio mostra album solo premium se hai effettuato l\'accesso con un account Premium</string>
+    <string name="use_login_for_browse_desc">CiÃ² puÃ² influenzare il contenuto che vedi e ad esempio mostra album solo premium se hai effettuato l\'accesso con un account Premium</string>
     <string name="dismiss">Ignorare</string>
     <string name="action_login">Accedi</string>
 </resources>

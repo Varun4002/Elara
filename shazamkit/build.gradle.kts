@@ -1,10 +1,10 @@
-plugins {
+﻿plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.metrolist.shazamkit"
+    namespace = "com.elara.shazamkit"
     compileSdk = 37
 
     defaultConfig {
