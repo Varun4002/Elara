@@ -32,11 +32,10 @@ fun GlassQuickActionChips(
         items(
             items = chips,
             key = { "chip_${it.label}" },
-        ) { index ->
-            val chip = chips[index]
+        ) { chip ->
             GlassTextButton(
                 text = chip.label,
-                onClick = { onChipClick(index) },
+                onClick = { onChipClick(chips.indexOf(chip)) },
                 selected = chip.isSelected,
                 shape = RoundedCornerShape(20.dp),
             )

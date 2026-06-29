@@ -37,6 +37,7 @@ materialKolor = "4.1.1"
 kuromojiIpadic = "0.9.0"
 newpipeextractor = "v0.26.3"
 tinypinyin = "2.0.3"
+materialIconsExtended = "1.7.8"
 protobuf = "4.34.1"
 
 [libraries]
@@ -55,6 +56,7 @@ compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-util = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-animation = { module = "androidx.compose.animation:animation-graphics", version.ref = "compose" }
+compose-animation-core = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 compose-reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "composeReorderable" }
 
 viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
@@ -62,6 +64,7 @@ viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose",
 lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 
 materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
 

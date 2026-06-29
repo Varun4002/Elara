@@ -31,11 +31,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.imageLoader
 import coil3.request.ImageRequest
+import coil3.request.allowHardware
 import coil3.toBitmap
 import com.elara.music.LocalPlayerConnection
 import com.elara.music.R
+import com.elara.music.utils.joinToArtistString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
 
 @Composable
@@ -46,9 +49,9 @@ fun ElaraPlayerScreen(
     val context = LocalContext.current
     val playerConnection = LocalPlayerConnection.current ?: return
 
-    val isPlaying by playerConnection.isPlaying.collectAsState()
-    val playbackState by playerConnection.playbackState.collectAsState()
-    val mediaMetadata by playerConnection.mediaMetadata.collectAsState()
+    val isPlaying by playerConnection.isPlaying.collectAsStateWithLifecycle()
+    val playbackState by playerConnection.playbackState.collectAsStateWithLifecycle()
+    val mediaMetadata by playerConnection.mediaMetadata.collectAsStateWithLifecycle()
     val canSkipPrevious by playerConnection.canSkipPrevious.collectAsStateWithLifecycle()
     val canSkipNext by playerConnection.canSkipNext.collectAsStateWithLifecycle()
     val isCasting by playerConnection.service.castConnectionHandler?.isCasting?.collectAsStateWithLifecycle()
@@ -83,7 +86,7 @@ fun ElaraPlayerScreen(
         mutableStateOf<List<Color>>(emptyList())
     }
 
-    fun extractPalette(bitmap: android.graphics.Bitmap) {
+    suspend fun extractPalette(bitmap: android.graphics.Bitmap) {
         val palette = withContext(Dispatchers.Default) {
             androidx.palette.graphics.Palette
                 .from(bitmap)
@@ -156,7 +159,7 @@ fun ElaraPlayerScreen(
         if (!isFullScreen && !isLocked) {
             PlayerTopBar(
                 title = mediaMetadata?.title ?: "",
-                subtitle = mediaMetadata?.artist ?: mediaMetadata?.uploaderName,
+                subtitle = mediaMetadata?.artists?.joinToArtistString(" & ") { it.name },
                 isCasting = isCasting,
                 onBack = onBack,
                 onCast = {},

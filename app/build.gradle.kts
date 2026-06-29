@@ -1,4 +1,4 @@
-﻿import org.gradle.api.DefaultTask
+import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 
 import org.gradle.api.file.RegularFileProperty
@@ -325,6 +325,7 @@ dependencies {
     implementation(libs.compose.ui.util)
     implementation(libs.compose.ui.tooling)
     implementation(libs.compose.animation)
+    implementation(libs.compose.animation.core)
     implementation(libs.compose.reorderable)
 
     implementation(libs.viewmodel)
@@ -332,6 +333,7 @@ dependencies {
     implementation(libs.lifecycle.process)
 
     implementation(libs.material3)
+    implementation(libs.material.icons.extended)
     implementation(libs.palette)
     implementation(libs.materialKolor)
 

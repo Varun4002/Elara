@@ -1,4 +1,4 @@
-﻿package com.elara.music.ui.screens
+package com.elara.music.ui.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -134,6 +137,7 @@ import com.elara.music.ui.component.shimmer.TextPlaceholder
 import com.elara.music.ui.home.CarouselStyle
 import com.elara.music.ui.home.ContinueListeningSection
 import com.elara.music.ui.home.GlassMediaData
+import com.elara.music.ui.home.GlassMediaCard
 import com.elara.music.ui.home.GlassMediaGrid
 import com.elara.music.ui.home.GlassNavigationTitle
 import com.elara.music.ui.home.GlassQuickActionChips
@@ -618,7 +622,7 @@ fun HomeScreen(
 
                         HomeSection.AccountPlaylists -> {
                             if (accountPlaylistsMediaData.isNotEmpty()) {
-                                item(key = "account_playlists_title") { GlassNavigationTitle(title = accountName, label = stringResource(R.string.mixes), onClick = { navController.navigate("account") }) }
+                                item(key = "account_playlists_title") { GlassNavigationTitle(title = accountName, label = stringResource(R.string.mixes)) }
                                 item(key = "account_playlists_grid") {
                                     GlassMediaGrid(
                                         items = accountPlaylistsMediaData,

@@ -1,6 +1,8 @@
 package com.elara.music.ui.theme
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
 data class GlassColors(
     val surface: Color,
@@ -40,11 +42,11 @@ object GlassColorTokens {
     )
 }
 
-enum class BlurRadius(val dp: Float) {
-    LIGHT(12f),
-    MEDIUM(24f),
-    HEAVY(40f),
-    EXTRA_HEAVY(60f),
+enum class BlurRadius(val dp: Dp) {
+    LIGHT(12.dp),
+    MEDIUM(24.dp),
+    HEAVY(40.dp),
+    EXTRA_HEAVY(60.dp),
 }
 
 enum class GlassAlpha(val value: Float) {

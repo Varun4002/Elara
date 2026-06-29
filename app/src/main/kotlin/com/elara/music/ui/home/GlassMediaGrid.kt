@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -19,7 +20,7 @@ fun GlassMediaGrid(
     columns: Int = 2,
     mosaicLayout: Boolean = false,
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp),
-    verticalArrangement: Arrangement.VerticalOrHorizontal = Arrangement.spacedBy(12.dp),
+    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(12.dp),
     horizontalArrangement: Arrangement.HorizontalOrVertical = Arrangement.spacedBy(12.dp),
 ) {
     LazyVerticalGrid(

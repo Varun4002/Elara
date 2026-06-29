@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Elara Project (C) 2026
  * Licensed under GPL-3.0 | See git history for contributors
  */
@@ -624,7 +624,7 @@ fun AiSettings(navController: NavController) {
                                     Text(
                                         if (aiSystemPrompt.isNotBlank()) {
                                             aiSystemPrompt.take(60).let {
-                                                if (aiSystemPrompt.length > 60) "$itâ€¦" else it
+                                                if (aiSystemPrompt.length > 60) "$it…" else it
                                             }
                                         } else {
                                             stringResource(R.string.ai_system_prompt_default)

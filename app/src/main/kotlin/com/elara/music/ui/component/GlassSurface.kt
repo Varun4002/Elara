@@ -81,7 +81,7 @@ fun GlassSurface(
 
     val density = LocalDensity.current
     val blurPx = with(density) { blurRadius.toPx() }
-    val cornerRadiusPx = with(density) { shape.topStart.toPx() }
+    val cornerRadiusPx = with(density) { shape.topStart.toPx(Size(blurPx, blurPx), this) }
     val interactionSource = remember { MutableInteractionSource() }
 
     Box(

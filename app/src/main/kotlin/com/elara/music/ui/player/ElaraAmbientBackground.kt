@@ -14,7 +14,8 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RenderEffect
+import androidx.compose.ui.graphics.BlurEffect
+import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -81,7 +82,7 @@ fun ElaraAmbientBackground(
                             } catch (_: Exception) { false }
                         }
                         val actualBlurDp = if (isLowEnd) BlurStrength.Light.dp else blurStrength.dp
-                        val actualBlurPx = with(density) { actualBlurDp.toPx() }
+                        val actualBlurPx = with(density) { actualBlurDp.dp.toPx() }
 
                         AsyncImage(
                             model = ImageRequest.Builder(context)
@@ -96,10 +97,10 @@ fun ElaraAmbientBackground(
                                 .fillMaxSize()
                                 .graphicsLayer {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                                        renderEffect = RenderEffect.createBlurEffect(
+                                        renderEffect = BlurEffect(
                                             actualBlurPx,
                                             actualBlurPx,
-                                            RenderEffect.EdgeTreatment.REPEAT,
+                                            TileMode.Decal,
                                         )
                                     }
                                     clip = true
@@ -150,10 +151,10 @@ fun ElaraAmbientBackground(
                     .fillMaxSize()
                     .graphicsLayer {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                            renderEffect = RenderEffect.createBlurEffect(
+                            renderEffect = BlurEffect(
                                 glassBlurPx,
                                 glassBlurPx,
-                                RenderEffect.EdgeTreatment.REPEAT,
+                                TileMode.Decal,
                             )
                         }
                         this.alpha = 0.04f * alpha
