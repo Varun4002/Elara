@@ -1,7 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "username": "varun",
-  "instructions": [".opencode/AGENTS.md", ".opencode/skills/elara-ui/SKILL.md"],
+  "instructions": [
+    ".opencode/AGENTS.md",
+    ".opencode/skills/elara-ui/SKILL.md",
+    ".opencode/skills/elara-compose/SKILL.md",
+    ".opencode/skills/elara-kotlin/SKILL.md",
+    ".opencode/skills/elara-architecture/SKILL.md"
+  ],
   "formatter": false,
   "references": {
     "metrolist-og": {
@@ -10,28 +16,24 @@
       "description": "Original Metrolist source - reference for rebranding and upstream changes"
     }
   },
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
   "agent": {
     "elara-ui-designer": {
       "description": "Expert UI/UX designer for Elara's glassmorphism player interface. Use when designing or modifying the player UI, glass components, or motion system.",
       "mode": "subagent",
-      "permission": {
-        "edit": "allow",
-        "bash": "allow",
-        "read": "allow",
-        "glob": "allow",
-        "grep": "allow"
-      }
+      "permission": { "edit": "allow", "bash": "allow", "read": "allow", "glob": "allow", "grep": "allow" }
     },
     "elara-rebrand": {
       "description": "Handles bulk rebranding operations: package rename, resource updates, directory moves. Use when doing find-replace across the codebase.",
       "mode": "subagent",
-      "permission": {
-        "edit": "allow",
-        "bash": "allow",
-        "read": "allow",
-        "glob": "allow",
-        "grep": "allow"
-      }
+      "permission": { "edit": "allow", "bash": "allow", "read": "allow", "glob": "allow", "grep": "allow" }
+    },
+    "elara-developer": {
+      "description": "Full-stack Elara developer combining all dev skills: Kotlin, Compose, architecture, media, data, networking, and performance. Use for general feature implementation.",
+      "mode": "subagent",
+      "permission": { "edit": "allow", "bash": "allow", "read": "allow", "glob": "allow", "grep": "allow" }
     }
   },
   "command": {
