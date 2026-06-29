@@ -1,0 +1,71 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "username": "varun",
+  "instructions": [".opencode/AGENTS.md", ".opencode/skills/elara-ui/SKILL.md"],
+  "formatter": false,
+  "references": {
+    "metrolist-og": {
+      "repository": "MetrolistGroup/Metrolist",
+      "branch": "main",
+      "description": "Original Metrolist source - reference for rebranding and upstream changes"
+    }
+  },
+  "agent": {
+    "elara-ui-designer": {
+      "description": "Expert UI/UX designer for Elara's glassmorphism player interface. Use when designing or modifying the player UI, glass components, or motion system.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
+      }
+    },
+    "elara-rebrand": {
+      "description": "Handles bulk rebranding operations: package rename, resource updates, directory moves. Use when doing find-replace across the codebase.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow"
+      }
+    }
+  },
+  "command": {
+    "build": {
+      "description": "Build the Elara GMS debug APK",
+      "agent": "build",
+      "template": "Build the Elara app for debugging:\n\n./gradlew :app:assembleGmsDebug\n\nIf it fails, read the error output carefully, fix the issue, and rebuild until successful."
+    },
+    "build-release": {
+      "description": "Build the Elara GMS release APK (signed)",
+      "agent": "build",
+      "template": "Build the Elara release APK:\n\n./gradlew :app:assembleGmsRelease\n\nThis requires a keystore at app/keystore/release.keystore with STORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD environment variables set."
+    },
+    "test": {
+      "description": "Run all Elara unit tests",
+      "agent": "build",
+      "template": "Run the Elara unit tests:\n\n./gradlew :app:testGmsDebugUnitTest"
+    },
+    "lint": {
+      "description": "Run Android lint on the Elara app module",
+      "agent": "build",
+      "template": "Run lint on the Elara app module:\n\n./gradlew :app:lintGmsDebug"
+    },
+    "clean": {
+      "description": "Clean all build artifacts",
+      "agent": "build",
+      "template": "Clean all Elara build artifacts:\n\n./gradlew clean"
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@context7/mcp-server"],
+      "enabled": true
+    }
+  }
+}
