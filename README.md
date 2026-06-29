@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
-<img src="https://raw.githubusercontent.com/Varun4002/Elara/main/app/src/main/res/drawable/app_icon.jpg" alt="Elara app icon" width="200" />
+<img src="https://raw.githubusercontent.com/Varun4002/Elara/main/app_icon2.jpg" alt="Elara app icon" width="200" />
 
 # Elara
 
