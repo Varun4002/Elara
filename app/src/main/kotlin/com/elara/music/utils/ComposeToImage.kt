@@ -275,7 +275,7 @@ object ComposeToImage {
             canvas.drawOval(logoBoxRect, logoBgPaint)
 
             // Draw Logo Icon
-            val rawLogo = ContextCompat.getDrawable(context, R.drawable.small_icon)?.toBitmap()
+            val rawLogo = ContextCompat.getDrawable(context, R.drawable.app_icon)?.toBitmap()
             rawLogo?.let {
                 val logoPaint =
                     Paint().apply {

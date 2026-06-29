@@ -145,6 +145,7 @@ class ProgressState(
 fun MiniPlayer(
     positionState: MutableLongState,
     durationState: MutableLongState,
+    gradientColors: List<Color> = emptyList(),
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
@@ -154,8 +155,9 @@ fun MiniPlayer(
     val progressState = remember { ProgressState(positionState, durationState) }
 
     if (useNewMiniPlayerDesign) {
-        NewMiniPlayer(
+        ElaraMiniPlayer(
             progressState = progressState,
+            gradientColors = gradientColors,
             modifier = modifier,
             onClick = onClick,
         )

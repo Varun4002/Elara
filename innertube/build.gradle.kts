@@ -29,7 +29,7 @@ dependencies {
     implementation(libs.ktor.serialization.json)
     implementation(libs.ktor.client.encoding)
     implementation(libs.brotli)
-    implementation("com.github.ElaraGroup:ElaraExtractor:f0a00f5") {
+    implementation(libs.newpipeextractor) {
         exclude(group = "com.google.protobuf")
     }
     implementation(libs.timber)

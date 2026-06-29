@@ -120,10 +120,9 @@ android {
         buildConfigField("String", "LASTFM_SECRET", "\"$lastFmSecret\"")
         buildConfigField("String", "ARCHITECTURE", "\"universal\"")
         buildConfigField("Long", "DISCORD_APP_ID", "1447278780795064401L")
+        buildConfigField("Boolean", "CAST_AVAILABLE", "true")
+        buildConfigField("Boolean", "UPDATER_AVAILABLE", "true")
     }
-
-    buildConfigField("Boolean", "CAST_AVAILABLE", "true")
-    buildConfigField("Boolean", "UPDATER_AVAILABLE", "true")
 
     signingConfigs {
         create("persistentDebug") {

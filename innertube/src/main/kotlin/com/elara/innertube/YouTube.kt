@@ -3289,7 +3289,7 @@ object YouTube {
                     val text =
                         group.transcriptCueGroupRenderer.cues[0]
                             .transcriptCueRenderer.cue.simpleText
-                            .trim('â™ª')
+                            .trim('\u266A')
                             .trim(' ')
                     "[%02d:%02d.%03d]$text".format(time / 60000, (time / 1000) % 60, time % 1000)
                 }!!

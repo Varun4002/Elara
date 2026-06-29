@@ -885,7 +885,7 @@ object LyricsUtils {
                 }
             }
 
-            if (!consumed && katakana[i] == 'ãƒƒ') {
+            if (!consumed && katakana[i] == '\u30C3') {
                 val nextCharToDouble = nextKatakana?.getOrNull(0)
                 if (nextCharToDouble != null) {
                     val nextCharRomaji = KANA_ROMAJI_MAP[nextCharToDouble.toString()]?.getOrNull(0)?.toString()
@@ -980,7 +980,7 @@ object LyricsUtils {
         val cyrillicChars = text.filter { it in '\u0400'..'\u04FF' }
 
         if (cyrillicChars.isEmpty() ||
-            (cyrillicChars.length == 1 && (cyrillicChars[0] == 'Ðµ' || cyrillicChars[0] == 'Ð•'))) {
+            (cyrillicChars.length == 1 && (cyrillicChars[0] == '\u0435' || cyrillicChars[0] == '\u0415'))) {
             return@withContext null
         }
 

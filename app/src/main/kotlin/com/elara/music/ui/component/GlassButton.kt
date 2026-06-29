@@ -24,8 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,8 +57,8 @@ fun GlassButton(
     val hapticFeedback = LocalHapticFeedback.current
 
     val density = LocalDensity.current
-    val blurPx = with(density) { BlurRadius.MEDIUM.dp.toPx() }
-    val cornerPx = with(density) { CircleShape.topStart.toPx() }
+    val blurPx = with(density) { (BlurRadius.MEDIUM.dp).dp.toPx() }
+    val cornerPx = with(density) { CircleShape.topStart.toPx(shapeSize = Size(size.toPx(), size.toPx()), density = this) }
 
     Box(
         modifier = modifier
@@ -124,8 +126,8 @@ fun GlassTextButton(
     )
 
     val textDensity = LocalDensity.current
-    val textBlurPx = with(textDensity) { BlurRadius.LIGHT.dp.toPx() }
-    val textCornerPx = with(textDensity) { shape.topStart.toPx() }
+    val textBlurPx = with(textDensity) { (BlurRadius.LIGHT.dp).dp.toPx() }
+    val textCornerPx = with(textDensity) { shape.topStart.toPx(shapeSize = Size.Zero, density = this) }
 
     Box(
         modifier = modifier

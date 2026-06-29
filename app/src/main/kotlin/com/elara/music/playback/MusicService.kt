@@ -543,6 +543,9 @@ class MusicService :
     var castConnectionHandler: CastConnectionHandler? = null
         private set
 
+    var audioRouteManager: com.elara.music.audio.AudioRouteManager? = null
+        private set
+
     private val screenStateReceiver =
         object : BroadcastReceiver() {
             override fun onReceive(
@@ -630,7 +633,7 @@ class MusicService :
                 CHANNEL_ID,
                 R.string.music_player,
             ).apply {
-                setSmallIcon(R.drawable.small_icon)
+                setSmallIcon(R.drawable.app_icon)
             }
 
         setMediaNotificationProvider(
@@ -739,6 +742,14 @@ class MusicService :
         playerVolume = MutableStateFlow((startupPrefs!![PlayerVolumeKey] ?: 1f).coerceIn(0f, 1f))
 
         initializeCast()
+
+        audioRouteManager = com.elara.music.audio.AudioRouteManager(
+            context = this,
+            scope = scope,
+            castIsCasting = castConnectionHandler?.isCasting,
+            castDeviceName = castConnectionHandler?.castDeviceName,
+        )
+        audioRouteManager?.start()
 
         // Collecting this flow activates the internal map that updates lyricsProviders in LyricsHelper
         lyricsHelper.preferred.collectLatest(scope) {}
@@ -3980,7 +3991,7 @@ class MusicService :
             .Builder(this, CHANNEL_ID)
             .setContentTitle(getString(R.string.music_player))
             .setContentText("")
-            .setSmallIcon(R.drawable.small_icon)
+            .setSmallIcon(R.drawable.app_icon)
             .setContentIntent(pending)
             .setOngoing(true)
             .build()
@@ -4044,6 +4055,8 @@ class MusicService :
         }
         audioManager.unregisterAudioDeviceCallback(audioDeviceCallback)
         castConnectionHandler?.release()
+        audioRouteManager?.stop()
+        audioRouteManager = null
         if (dataStore.get(PersistentQueueKey, true)) {
             saveQueueToDisk()
         }

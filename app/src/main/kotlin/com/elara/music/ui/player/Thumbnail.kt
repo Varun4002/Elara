@@ -602,7 +602,7 @@ private fun HiddenThumbnailPlaceholder(
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            painter = painterResource(R.drawable.small_icon),
+            painter = painterResource(R.drawable.app_icon),
             contentDescription = stringResource(R.string.hide_player_thumbnail),
             modifier = Modifier.size(120.dp)
         )

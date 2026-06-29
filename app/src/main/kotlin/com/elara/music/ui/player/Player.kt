@@ -10,6 +10,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.provider.Settings
 import android.content.res.Configuration
 import android.view.WindowManager
 import android.widget.Toast
@@ -87,7 +88,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -136,6 +136,7 @@ import coil3.toBitmap
 import com.elara.music.LocalDatabase
 import com.elara.music.LocalDownloadUtil
 import com.elara.music.LocalListenTogetherManager
+import com.elara.music.LocalAudioRouteManager
 import com.elara.music.LocalPlayerConnection
 import com.elara.music.R
 import com.elara.music.constants.CropAlbumArtKey
@@ -168,16 +169,22 @@ import com.elara.music.ui.component.BottomSheetState
 import com.elara.music.ui.component.LocalBottomSheetPageState
 import com.elara.music.ui.component.LocalMenuState
 import com.elara.music.ui.component.Lyrics
+import com.elara.music.ui.component.GlassSlider
 import com.elara.music.ui.component.PlayerSliderTrack
 import com.elara.music.ui.component.ResizableIconButton
 import com.elara.music.ui.component.SquigglySlider
 import com.elara.music.ui.component.WavySlider
+import com.elara.music.ui.component.GlassSurface
 import com.elara.music.ui.component.rememberBottomSheetState
 import com.elara.music.ui.menu.PlayerMenu
 import com.elara.music.ui.screens.settings.DarkMode
 import com.elara.music.ui.theme.PlayerColorExtractor
 import com.elara.music.ui.theme.PlayerSliderColors
+import com.elara.music.ui.theme.BlurRadius
+import com.elara.music.ui.theme.GlassAlpha
 import com.elara.music.ui.utils.ShowMediaInfo
+import com.elara.music.audio.PlaybackDestination
+import com.elara.music.ui.player.PlaybackDestinationCapsule
 import com.elara.music.ui.utils.ShowOffsetDialog
 import com.elara.music.utils.dataStore
 import com.elara.music.utils.makeTimeString
@@ -332,6 +339,11 @@ fun BottomSheetPlayer(
     val listenTogetherManager = LocalListenTogetherManager.current
     val listenTogetherRoleState = listenTogetherManager?.role?.collectAsStateWithLifecycle(initialValue = RoomRole.NONE)
     val isListenTogetherGuest = listenTogetherRoleState?.value == RoomRole.GUEST
+
+    // Playback destination state
+    val audioRouteProvider = LocalAudioRouteManager.current
+    val playbackDestination by audioRouteProvider?.destination?.collectAsStateWithLifecycle()
+        ?: remember { mutableStateOf(PlaybackDestination.deviceSpeaker()) }
 
     // Cast state - safely access castConnectionHandler to prevent crashes during service lifecycle changes
     val castHandler =
@@ -834,86 +846,53 @@ fun BottomSheetPlayer(
         state = state,
         modifier = modifier,
         background = {
-            Box(
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .background(bottomSheetBackgroundColor),
-            ) {
-                when (playerBackground) {
-                    PlayerBackgroundStyle.BLUR -> {
-                        AnimatedContent(
-                            targetState = mediaMetadata?.thumbnailUrl,
-                            transitionSpec = {
-                                fadeIn(tween(800)).togetherWith(fadeOut(tween(800)))
-                            },
-                            label = "blurBackground",
-                        ) { thumbnailUrl ->
-                            if (thumbnailUrl != null) {
-                                Box(modifier = Modifier.alpha(backgroundAlpha)) {
-                                    AsyncImage(
-                                        model =
-                                            ImageRequest
-                                                .Builder(context)
-                                                .data(thumbnailUrl)
-                                                .size(100, 100)
-                                                .allowHardware(false)
-                                                .build(),
-                                        contentDescription = null,
-                                        contentScale = ContentScale.Crop,
-                                        modifier =
-                                            Modifier
-                                                .fillMaxSize()
-                                                .blur(if (useDarkTheme) 150.dp else 100.dp),
-                                    )
-                                    Box(
-                                        modifier =
-                                            Modifier
-                                                .fillMaxSize()
-                                                .background(Color.Black.copy(alpha = 0.3f)),
-                                    )
-                                }
-                            }
-                        }
+            when (playerBackground) {
+                PlayerBackgroundStyle.GRADIENT -> {
+                    val ambientColors = remember(gradientColors) {
+                        if (gradientColors.isNotEmpty()) {
+                            AmbientColors(
+                                vibrant = gradientColors[0],
+                                muted = gradientColors.getOrElse(1) { gradientColors[0] },
+                                darkMuted = gradientColors.getOrElse(2) { Color.Black },
+                                dominant = gradientColors[0],
+                            )
+                        } else null
                     }
+                    val displayColors = ambientColors?.let { safeDisplayColors(it) }
+                    ElaraAmbientBackground(
+                        colors = displayColors,
+                        alpha = backgroundAlpha,
+                        mode = AmbientMode.Gradient,
+                        crossfadeDurationMs = 2000,
+                    )
+                }
 
-                    PlayerBackgroundStyle.GRADIENT -> {
-                        AnimatedContent(
-                            targetState = gradientColors,
-                            transitionSpec = {
-                                fadeIn(tween(800)).togetherWith(fadeOut(tween(800)))
-                            },
-                            label = "gradientBackground",
-                        ) { colors ->
-                            if (colors.isNotEmpty()) {
-                                val gradientColorStops =
-                                    if (colors.size >= 3) {
-                                        arrayOf(
-                                            0.0f to colors[0],
-                                            0.5f to colors[1],
-                                            1.0f to colors[2],
-                                        )
-                                    } else {
-                                        arrayOf(
-                                            0.0f to colors[0],
-                                            0.6f to colors[0].copy(alpha = 0.7f),
-                                            1.0f to Color.Black,
-                                        )
-                                    }
-                                Box(
-                                    Modifier
-                                        .fillMaxSize()
-                                        .alpha(backgroundAlpha)
-                                        .background(Brush.verticalGradient(colorStops = gradientColorStops))
-                                        .background(Color.Black.copy(alpha = 0.2f)),
-                                )
-                            }
-                        }
+                PlayerBackgroundStyle.BLUR -> {
+                    val ambientColors = remember(gradientColors) {
+                        if (gradientColors.isNotEmpty()) {
+                            AmbientColors(
+                                vibrant = gradientColors[0],
+                                muted = gradientColors.getOrElse(1) { gradientColors[0] },
+                                darkMuted = gradientColors.getOrElse(2) { Color.Black },
+                                dominant = gradientColors[0],
+                            )
+                        } else null
                     }
+                    ElaraAmbientBackground(
+                        colors = ambientColors,
+                        backgroundImage = mediaMetadata?.thumbnailUrl,
+                        alpha = backgroundAlpha,
+                        mode = AmbientMode.Blur,
+                        blurStrength = BlurStrength.Heavy,
+                    )
+                }
 
-                    else -> {
-                        PlayerBackgroundStyle.DEFAULT
-                    }
+                PlayerBackgroundStyle.DEFAULT -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(bottomSheetBackgroundColor),
+                    )
                 }
             }
         },
@@ -931,6 +910,7 @@ fun BottomSheetPlayer(
             MiniPlayer(
                 positionState = positionState,
                 durationState = durationState,
+                gradientColors = gradientColors,
                 onClick = { state.expandSoft() },
             )
         },
@@ -942,14 +922,19 @@ fun BottomSheetPlayer(
                 label = "playPauseRoundness",
             )
 
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = PlayerHorizontalPadding),
+            GlassSurface(
+                blurRadius = BlurRadius.LIGHT.dp,
+                alpha = GlassAlpha.SURFACE.value,
+                borderAlpha = GlassAlpha.BORDER.value,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = PlayerHorizontalPadding),
             ) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
                 AnimatedContent(
                     targetState = showInlineLyrics,
                     label = "ThumbnailAnimation",
@@ -966,7 +951,7 @@ fun BottomSheetPlayer(
                                     contentAlignment = Alignment.Center,
                                 ) {
                                     Icon(
-                                        painter = painterResource(R.drawable.small_icon),
+                                        painter = painterResource(R.drawable.app_icon),
                                         contentDescription = null,
                                         modifier =
                                             Modifier
@@ -1364,20 +1349,49 @@ fun BottomSheetPlayer(
                     }
                 }
             }
+        }
 
-            Spacer(Modifier.height(24.dp))
+        PlaybackDestinationCapsule(
+            destination = playbackDestination,
+            tintColor = gradientColors.firstOrNull() ?: Color(0xFFED5564),
+            onClick = {
+                when {
+                    playbackDestination.isCasting -> {
+                        context.startActivity(Intent(Settings.ACTION_CAST_SETTINGS))
+                    }
+                    playbackDestination.isBluetooth -> {
+                        context.startActivity(Intent(Settings.ACTION_BLUETOOTH_SETTINGS))
+                    }
+                    else -> {
+                        context.startActivity(Intent(Settings.ACTION_SOUND_SETTINGS))
+                    }
+                }
+            },
+            modifier = Modifier.padding(horizontal = PlayerHorizontalPadding),
+        )
 
-            when (sliderStyle) {
+        Spacer(Modifier.height(16.dp))
+
+        GlassSurface(
+            blurRadius = BlurRadius.LIGHT.dp,
+            alpha = GlassAlpha.SURFACE.value,
+            borderAlpha = GlassAlpha.BORDER.value,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = PlayerHorizontalPadding),
+        ) {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                when (sliderStyle) {
                 SliderStyle.DEFAULT -> {
-                    Slider(
-                        value = (sliderPosition ?: effectivePosition).toFloat(),
-                        valueRange = 0f..(if (duration == C.TIME_UNSET) 0f else duration.toFloat()),
-                        onValueChange = {
+                    val maxDuration = if (duration == C.TIME_UNSET || duration <= 0L) 0f else duration.toFloat()
+                    GlassSlider(
+                        progress = if (maxDuration > 0f) ((sliderPosition ?: effectivePosition).toFloat() / maxDuration).coerceIn(0f, 1f) else 0f,
+                        onSeek = { seekProgress ->
                             if (!isListenTogetherGuest) {
-                                sliderPosition = it.toLong()
+                                sliderPosition = (seekProgress * maxDuration).toLong()
                             }
                         },
-                        onValueChangeFinished = {
+                        onSeekFinished = {
                             if (!isListenTogetherGuest) {
                                 sliderPosition?.let {
                                     if (isCasting) {
@@ -1391,8 +1405,7 @@ fun BottomSheetPlayer(
                                 sliderPosition = null
                             }
                         },
-                        enabled = !isListenTogetherGuest,
-                        colors = PlayerSliderColors.getSliderColors(textButtonColor, playerBackground, useDarkTheme),
+                        accentColor = textButtonColor,
                         modifier = Modifier.padding(horizontal = PlayerHorizontalPadding),
                     )
                 }
@@ -1508,11 +1521,13 @@ fun BottomSheetPlayer(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
+                }
             }
+        }
 
-            Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(24.dp))
 
-            AnimatedVisibility(
+        AnimatedVisibility(
                 visible = !isFullScreen,
                 enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
                 exit = shrinkVertically(shrinkTowards = Alignment.Top) + slideOutVertically(targetOffsetY = { it }) + fadeOut(),
@@ -2212,5 +2227,23 @@ private fun PlayerMoreMenuButton(
             contentDescription = null,
             colorFilter = ColorFilter.tint(iconButtonColor),
         )
+    }
+}
+
+private fun safeDisplayColors(colors: AmbientColors): AmbientColors {
+    val argb = colors.vibrant.toArgb()
+    val hsv = FloatArray(3)
+    android.graphics.Color.colorToHSV(argb, hsv)
+    val brightness = hsv[2]
+    return when {
+        brightness > 0.8f -> colors.copy(
+            vibrant = colors.vibrant.copy(
+                red = (colors.vibrant.red * 0.7f).coerceAtMost(1f),
+                green = (colors.vibrant.green * 0.7f).coerceAtMost(1f),
+                blue = (colors.vibrant.blue * 0.7f).coerceAtMost(1f),
+            ),
+        )
+        brightness < 0.15f -> colors.copy(vibrant = colors.muted)
+        else -> colors
     }
 }

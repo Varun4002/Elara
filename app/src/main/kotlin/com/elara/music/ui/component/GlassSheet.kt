@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.dp
 import com.elara.music.ui.theme.BlurRadius
 
@@ -31,8 +32,8 @@ fun GlassSheet(
     content: @Composable () -> Unit,
 ) {
     val density = LocalDensity.current
-    val blurPx = with(density) { BlurRadius.HEAVY.dp.toPx() }
-    val cornerPx = with(density) { RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp).topStart.toPx() }
+    val blurPx = with(density) { (BlurRadius.HEAVY.dp).dp.toPx() }
+    val cornerPx = with(density) { RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp).topStart.toPx(shapeSize = Size.Zero, density = this) }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,

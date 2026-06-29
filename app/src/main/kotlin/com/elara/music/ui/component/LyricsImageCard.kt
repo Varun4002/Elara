@@ -403,7 +403,7 @@ fun LyricsImageCard(
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.small_icon),
+                            painter = painterResource(id = R.drawable.app_icon),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(38.dp)

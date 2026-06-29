@@ -17,8 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RenderEffect
+import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -38,8 +40,8 @@ fun Modifier.glassBlurModifier(
 ): Modifier = this
     .graphicsLayer {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            renderEffect = RenderEffect.Companion.createBlurEffect(
-                blurPx, blurPx, RenderEffect.Companion.EdgeTreatment.REPEAT
+            renderEffect = BlurEffect(
+                blurPx, blurPx, TileMode.Repeated
             )
         }
         this@graphicsLayer.alpha = alpha

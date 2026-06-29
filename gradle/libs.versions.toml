@@ -1,4 +1,4 @@
-﻿[versions]
+[versions]
 androidGradlePlugin = "9.2.1"
 browser = "1.10.0"
 robolectric = "4.14.1"
@@ -35,7 +35,7 @@ junit = "4.13.2"
 timber = "5.0.1"
 materialKolor = "4.1.1"
 kuromojiIpadic = "0.9.0"
-extractor = "3cd3341"
+newpipeextractor = "v0.26.3"
 tinypinyin = "2.0.3"
 protobuf = "4.34.1"
 
@@ -115,8 +115,7 @@ junit = { module = "junit:junit", version.ref = "junit" }
 
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
-# newpipeextractor = { module = "com.github.TeamNewPipe:NewPipeExtractor", version.ref = "newpipeextractor" }
-extractor = { module = "com.github.ElaraGroup:ElaraExtractor", version.ref = "extractor" }
+newpipeextractor = { module = "com.github.TeamNewPipe:NewPipeExtractor", version.ref = "newpipeextractor" }
 
 kuromoji-ipadic = { module = "com.atilika.kuromoji:kuromoji-ipadic", version.ref = "kuromojiIpadic" }
 tinypinyin = { module = "com.github.promeG:tinypinyin", version.ref = "tinypinyin" }

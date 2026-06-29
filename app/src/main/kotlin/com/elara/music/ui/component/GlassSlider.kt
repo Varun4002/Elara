@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 fun GlassSlider(
     progress: Float,
     onSeek: (Float) -> Unit,
+    onSeekFinished: () -> Unit = {},
     modifier: Modifier = Modifier,
     trackHeight: Dp = 4.dp,
     thumbRadius: Dp = 6.dp,
@@ -59,7 +61,7 @@ fun GlassSlider(
                 .pointerInput(Unit) {
                     detectDragGestures(
                         onDragStart = { isDragging = true },
-                        onDragEnd = { isDragging = false },
+                        onDragEnd = { isDragging = false; onSeekFinished() },
                         onDragCancel = { isDragging = false },
                         onDrag = { change, _ ->
                             change.consume()
