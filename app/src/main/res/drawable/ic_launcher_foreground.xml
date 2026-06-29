@@ -1,22 +1,24 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="108dp"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
-    android:viewportWidth="279.1"
-    android:viewportHeight="273.06">
-    <group
-        android:scaleX="0.78"
-        android:scaleY="0.78"
-        android:translateX="30.7"
-        android:translateY="30.0">
-        <path
-            android:fillColor="#FF000000"
-            android:pathData="M69.29,82.34L99.33,57.43A86.55,90 50.34,0 1,223.86 66.63L223.86,66.63A86.55,90 50.34,0 1,209.82 190.7L179.77,215.61A86.55,90 50.34,0 1,55.24 206.42L55.24,206.42A86.55,90 50.34,0 1,69.29 82.34z" />
-        <path
-            android:fillColor="#00000000"
-            android:pathData="M112.47,134.09L87.22,160.96C85.51,162.77 85.51,165.74 87.22,167.55L111.56,193.44C113.26,195.25 116.05,195.25 117.75,193.44L143.92,165.6C144.75,164.76 145.19,163.55 145.19,162.35L145.19,82.9C145.19,78.77 149.86,76.68 152.65,79.61L193.17,122.48"
-            android:strokeColor="#FFFFFFFF"
-            android:strokeWidth="22.5"
-            android:strokeLineCap="butt"
-            android:strokeLineJoin="miter" />
-    </group>
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <path
+        android:pathData="M54,54m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0">
+        <aapt:attr name="android:fillColor">
+            <gradient 
+                android:type="linear"
+                android:startX="16" android:startY="16"
+                android:endX="92" android:endY="92">
+                <item android:offset="0.0" android:color="#9D4EDD"/>
+                <item android:offset="1.0" android:color="#3A0CA3"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M66,36 c-1.5,0 -2.5,1 -2.5,2.5 v25.3 c-2,-1.5 -4.5,-2.3 -7.5,-2.3 c-6.5,0 -12,4.5 -12,10.5 c0,6 5.5,10.5 12,10.5 c6.5,0 12,-4.5 12,-10.5 v-24 c4,2.5 8,4.5 12,5.5 v-5.5 c-4,-1 -9,-4.5 -12,-11.5 z" />
 </vector>
