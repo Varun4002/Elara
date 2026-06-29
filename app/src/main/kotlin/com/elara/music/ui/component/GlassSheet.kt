@@ -32,7 +32,7 @@ fun GlassSheet(
     content: @Composable () -> Unit,
 ) {
     val density = LocalDensity.current
-    val blurPx = with(density) { (BlurRadius.HEAVY.dp).dp.toPx() }
+    val blurPx = with(density) { BlurRadius.HEAVY.dp.toPx() }
     val cornerPx = with(density) { RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp).topStart.toPx(shapeSize = Size.Zero, density = this) }
 
     ModalBottomSheet(

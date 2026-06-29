@@ -29,6 +29,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -99,7 +101,7 @@ import com.elara.music.ui.theme.GlassAlpha
 import com.elara.music.ui.utils.resize
 import com.elara.music.utils.joinToArtistString
 import kotlinx.coroutines.launch
-import kotlin.math.absoluteValue
+import kotlin.math.abs
 import kotlin.math.roundToInt
 
 private val MINI_CORNER = 32.dp
@@ -217,7 +219,7 @@ fun ElaraMiniPlayer(
                                         (dragRight && !canPrev && offsetXAnimatable.value < 0) ||
                                             (dragLeft && !canNext && offsetXAnimatable.value > 0)
                                     if (allowLeft || allowRight || canReturn) {
-                                        totalDragDistance += absoluteValue(adjusted)
+                                        totalDragDistance += abs(adjusted)
                                         coroutineScope.launch {
                                             offsetXAnimatable.snapTo(
                                                 offsetXAnimatable.value + adjusted,
@@ -237,12 +239,12 @@ fun ElaraMiniPlayer(
                                             -(-11.44748f * swipeSensitivity + 9.04945f),
                                         ))).roundToInt()
                                     val shouldChange =
-                                        (absoluteValue(currentOffset) > 50f &&
+                                        (abs(currentOffset) > 50f &&
                                             velocity > (swipeSensitivity * -8.25f + 8.5f)) ||
-                                            absoluteValue(currentOffset) > autoThreshold
+                                            abs(currentOffset) > autoThreshold
                                     if (shouldChange) {
                                         hapticFeedback.performHapticFeedback(
-                                            HapticFeedbackType.LightImpact,
+                                            HapticFeedbackType.LongPress,
                                         )
                                         if (currentOffset > 0 && canSkipPrevious) {
                                             playerConnection.player.seekToPreviousMediaItem()
@@ -277,7 +279,7 @@ fun ElaraMiniPlayer(
                 onClick = {
                     coroutineScope.launch {
                         hapticFeedback.performHapticFeedback(
-                            HapticFeedbackType.LightImpact,
+                            HapticFeedbackType.LongPress,
                         )
                         onClick()
                     }

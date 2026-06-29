@@ -57,7 +57,7 @@ fun GlassButton(
     val hapticFeedback = LocalHapticFeedback.current
 
     val density = LocalDensity.current
-    val blurPx = with(density) { (BlurRadius.MEDIUM.dp).dp.toPx() }
+    val blurPx = with(density) { BlurRadius.MEDIUM.dp.toPx() }
     val cornerPx = with(density) { CircleShape.topStart.toPx(shapeSize = Size(size.toPx(), size.toPx()), density = this) }
 
     Box(
@@ -126,7 +126,7 @@ fun GlassTextButton(
     )
 
     val textDensity = LocalDensity.current
-    val textBlurPx = with(textDensity) { (BlurRadius.LIGHT.dp).dp.toPx() }
+    val textBlurPx = with(textDensity) { BlurRadius.LIGHT.dp.toPx() }
     val textCornerPx = with(textDensity) { shape.topStart.toPx(shapeSize = Size.Zero, density = this) }
 
     Box(

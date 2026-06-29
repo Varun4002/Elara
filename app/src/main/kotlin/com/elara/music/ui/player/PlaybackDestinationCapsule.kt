@@ -149,17 +149,15 @@ fun PlaybackDestinationCapsule(
                 AnimatedContent(
                     targetState = destination.displayName,
                     transitionSpec = {
-                        fadeIn(animationSpec = tween(170, delayMillis = 80)) +
+                        (fadeIn(animationSpec = tween(170, delayMillis = 80)) +
                             slideInVertically(
                                 animationSpec = tween(170, delayMillis = 80),
                                 initialOffsetY = { it / 4 },
-                            )
-                            togetherWith
-                            fadeOut(animationSpec = tween(100)) +
+                            )) togetherWith (fadeOut(animationSpec = tween(100)) +
                             slideOutVertically(
                                 animationSpec = tween(100),
                                 targetOffsetY = { -it / 4 },
-                            )
+                            ))
                     },
                     label = "capsuleName",
                 ) { name ->
@@ -176,8 +174,7 @@ fun PlaybackDestinationCapsule(
                     AnimatedContent(
                         targetState = destination.subtitle,
                         transitionSpec = {
-                            fadeIn(animationSpec = tween(120, delayMillis = 200))
-                                togetherWith fadeOut(animationSpec = tween(80))
+                            (fadeIn(animationSpec = tween(120, delayMillis = 200))) togetherWith (fadeOut(animationSpec = tween(80)))
                         },
                         label = "capsuleSubtitle",
                     ) { subtitle ->

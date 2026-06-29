@@ -564,7 +564,10 @@ fun HomeScreen(
 
                         HomeSection.QuickPicks -> {
                             if (quickPickMediaData.isNotEmpty()) {
-                                item(key = "quick_picks_title") { GlassNavigationTitle(title = stringResource(R.string.quick_picks), onPlayAllClick = if (!isListenTogetherGuest) {{ playerConnection.playQueue(ListQueue(title = stringResource(R.string.quick_picks), items = quickPicks!!.distinctBy { it.id }.map { it.toMediaItem() })) }} else null) }
+                                item(key = "quick_picks_title") {
+                                    val quickPicksTitle = stringResource(R.string.quick_picks)
+                                    GlassNavigationTitle(title = quickPicksTitle, onPlayAllClick = if (!isListenTogetherGuest) {{ playerConnection.playQueue(ListQueue(title = quickPicksTitle, items = quickPicks!!.distinctBy { it.id }.map { it.toMediaItem() })) }} else null)
+                                }
                                 item(key = "quick_picks_grid") {
                                     GlassMediaGrid(
                                         items = quickPickMediaData,
@@ -597,24 +600,29 @@ fun HomeScreen(
                         HomeSection.DailyDiscover -> {
                             if (dailyDiscoverMediaData.isNotEmpty()) {
                                 item(key = "daily_discover_carousel") {
+                                    val dailyDiscoverTitle = stringResource(R.string.your_daily_discover)
                                     RecommendationCarousel(
-                                        title = stringResource(R.string.your_daily_discover),
+                                        title = dailyDiscoverTitle,
                                         items = dailyDiscoverMediaData,
                                         onClick = { index -> val item = dailyDiscover?.getOrNull(index)?.recommendation as? SongItem ?: return@RecommendationCarousel; if (!isListenTogetherGuest) playerConnection.playQueue(if (autoRadioQueue) YouTubeQueue(item.endpoint ?: WatchEndpoint(videoId = item.id), item.toMediaMetadata()) else ListQueue(title = item.title, items = listOf(item.toMediaItem()))) },
                                         style = CarouselStyle.HeroCard,
-                                        onPlayAllClick = if (!isListenTogetherGuest) {{ val queueItems = dailyDiscover?.mapNotNull { (it.recommendation as? SongItem)?.toMediaMetadata() }; if (queueItems != null && queueItems.isNotEmpty()) playerConnection.playQueue(ListQueue(title = stringResource(R.string.your_daily_discover), items = queueItems.map { it.toMediaItem() })) }} else null,
+                                        onPlayAllClick = if (!isListenTogetherGuest) {{ val queueItems = dailyDiscover?.mapNotNull { (it.recommendation as? SongItem)?.toMediaMetadata() }; if (queueItems != null && queueItems.isNotEmpty()) playerConnection.playQueue(ListQueue(title = dailyDiscoverTitle, items = queueItems.map { it.toMediaItem() })) }} else null,
                                     )
                                 }
                             }
                         }
 
                         HomeSection.KeepListening -> {
-                            if (keepListeningMediaData.isNotEmpty()) {
-                                item(key = "keep_listening_section") {
-                                    ContinueListeningSection(
+                            keepListening?.takeIf { it.isNotEmpty() }?.let { items ->
+                                item(key = "keep_listening_carousel") {
+                                    val keepListeningTitle = stringResource(R.string.keep_listening)
+                                    RecommendationCarousel(
+                                        title = keepListeningTitle,
                                         items = keepListeningMediaData,
-                                        onClick = { index -> val item = keepListening?.getOrNull(index) ?: return@ContinueListeningSection; if (!isListenTogetherGuest) { if (item is Song && item.id == mediaMetadata?.id) playerConnection.togglePlayPause() else { val md = when (item) { is Song -> item.toMediaMetadata(); else -> return@ContinueListeningSection }; playerConnection.playQueue(if (autoRadioQueue) YouTubeQueue.radio(md) else ListQueue(title = item.title, items = listOf(md.toMediaItem()))) } } },
-                                        onLongClick = { index -> val item = keepListening?.getOrNull(index) ?: return@ContinueListeningSection; haptic.performHapticFeedback(HapticFeedbackType.LongPress); if (item is Song) menuState.show { SongMenu(originalSong = item, onDismiss = menuState::dismiss) } },
+                                        onClick = { index -> val item = items.getOrNull(index) ?: return@RecommendationCarousel; if (!isListenTogetherGuest) { if (item is Song && item.id == mediaMetadata?.id) playerConnection.togglePlayPause() else { val md = when (item) { is Song -> item.toMediaMetadata(); else -> return@RecommendationCarousel }; playerConnection.playQueue(if (autoRadioQueue) YouTubeQueue.radio(md) else ListQueue(title = item.title, items = listOf(md.toMediaItem()))) } } },
+                                        onLongClick = { index -> val item = keepListening?.getOrNull(index) ?: return@RecommendationCarousel; haptic.performHapticFeedback(HapticFeedbackType.LongPress); if (item is Song) menuState.show { SongMenu(originalSong = item, onDismiss = menuState::dismiss) } },
+                                        style = CarouselStyle.HeroCard,
+                                        onPlayAllClick = null,
                                     )
                                 }
                             }
@@ -635,13 +643,14 @@ fun HomeScreen(
 
                         HomeSection.ForgottenFavorites -> {
                             if (forgottenFavoritesMediaData.isNotEmpty()) {
-                                item(key = "forgotten_favorites_title") { GlassNavigationTitle(title = stringResource(R.string.forgotten_favorites), onPlayAllClick = if (!isListenTogetherGuest) {{ playerConnection.playQueue(ListQueue(title = stringResource(R.string.forgotten_favorites), items = forgottenFavorites!!.distinctBy { it.id }.map { it.toMediaItem() })) }} else null) }
-                                item(key = "forgotten_favorites_grid") {
-                                    GlassMediaGrid(
+                                item(key = "forgotten_favorites_carousel") {
+                                    val forgottenFavoritesTitle = stringResource(R.string.forgotten_favorites)
+                                    RecommendationCarousel(
+                                        title = forgottenFavoritesTitle,
                                         items = forgottenFavoritesMediaData,
-                                        onClick = { index -> val song = forgottenFavorites?.getOrNull(index) ?: return@GlassMediaGrid; if (!isListenTogetherGuest) { if (song.id == mediaMetadata?.id) playerConnection.togglePlayPause() else playerConnection.playQueue(if (autoRadioQueue) YouTubeQueue.radio(song.toMediaMetadata()) else ListQueue(title = song.title, items = listOf(song.toMediaItem()))) } },
-                                        onLongClick = { index -> val song = forgottenFavorites?.getOrNull(index) ?: return@GlassMediaGrid; haptic.performHapticFeedback(HapticFeedbackType.LongPress); menuState.show { SongMenu(originalSong = song, onDismiss = menuState::dismiss) } },
-                                        columns = 2,
+                                        onClick = { index -> val item = forgottenFavorites?.getOrNull(index) ?: return@RecommendationCarousel; if (!isListenTogetherGuest) { if (item.id == mediaMetadata?.id) playerConnection.togglePlayPause() else playerConnection.playQueue(ListQueue(title = forgottenFavoritesTitle, items = listOf(item.toMediaItem()))) } },
+                                        style = CarouselStyle.HeroCard,
+                                        onPlayAllClick = if (!isListenTogetherGuest) {{ playerConnection.playQueue(ListQueue(title = forgottenFavoritesTitle, items = forgottenFavorites!!.distinctBy { it.id }.map { it.toMediaItem() })) }} else null,
                                     )
                                 }
                             }
@@ -665,13 +674,11 @@ fun HomeScreen(
                                 val hasPlayableSongs = sectionSongs.isNotEmpty()
                                 val isSongsOnlySection = sectionData.items.isNotEmpty() && sectionData.items.all { it is SongItem }
 
-                                val mediaItems = remember(sectionData.items) {
-                                    sectionData.items.map { ytItem ->
-                                        ytItem.toGlassMediaData(
-                                            isActive = ytItem.id in listOf(mediaMetadata?.album?.id, mediaMetadata?.id),
-                                            isPlaying = isPlaying,
-                                        )
-                                    }
+                                val mediaItems = sectionData.items.map { ytItem ->
+                                    ytItem.toGlassMediaData(
+                                        isActive = ytItem.id in listOf(mediaMetadata?.album?.id, mediaMetadata?.id),
+                                        isPlaying = isPlaying,
+                                    )
                                 }
 
                                 item(key = "home_section_title_${section.index}") {
